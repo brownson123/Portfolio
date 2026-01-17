@@ -124,6 +124,11 @@ function openProjectModal(projectId) {
         modalFeatures.appendChild(li);
     });
 
+    if (window.innerWidth <= 600) {
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+    }
+
     modalTech.innerHTML = '';
     project.techStack.forEach(tech => {
         const span = document.createElement('span');
@@ -224,6 +229,10 @@ function closeModal() {
     currentProjectId = null;
     currentScreenshotIndex = 0;
     currentScreenshots = [];
+    if (window.innerWidth <= 600) {
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+    }
 }
 
 // Project cards click handler
