@@ -1,27 +1,81 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+// ============================================
+// MOBILE NAVIGATION
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const navClose = document.querySelector('.nav-close');
+    const navLinksMobile = document.querySelectorAll('.nav-links-mobile a');
+
+    // Open mobile menu
+    hamburger.addEventListener('click', () => {
+        navOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close mobile menu
+    navClose.addEventListener('click', () => {
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close menu when clicking a link
+    navLinksMobile.forEach(link => {
+        link.addEventListener('click', () => {
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navOverlay.classList.contains('active')) {
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close menu when clicking outside (on overlay background)
+    navOverlay.addEventListener('click', (e) => {
+        if (e.target === navOverlay) {
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     });
 });
 
-// Simple Console signature (Dev touch)
+// ============================================
+// SMOOTH SCROLLING
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// ============================================
+// CONSOLE SIGNATURE
+// ============================================
 console.log(
     "%c Hello! Looking for the code? Check out the repo on my GitHub.",
     "color: #64ffda; font-size: 12px; font-weight: bold; background: #0a192f; padding: 5px;"
 );
 
-
-// Modal elements
+// ============================================
+// PROJECT MODAL
+// ============================================
 const modal = document.getElementById('project-modal');
 const modalClose = document.getElementById('modal-close');
 const modalPrev = document.getElementById('modal-prev');
 const modalNext = document.getElementById('modal-next');
 
-// Modal content elements
 const modalTitle = document.getElementById('modal-title');
 const modalProjectId = document.getElementById('modal-project-id');
 const modalScreenshot = document.getElementById('modal-screenshot');
@@ -34,14 +88,11 @@ const modalInstallation = document.getElementById('modal-installation');
 const modalGithub = document.getElementById('modal-github');
 const screenshotCounter = document.getElementById('screenshot-counter');
 const galleryDots = document.getElementById('gallery-dots');
-const screenshotContainer = document.querySelector('.screenshot-container');
 
-// State
 let currentProjectId = null;
 let currentScreenshotIndex = 0;
 let currentScreenshots = [];
 
-// Open modal with project details
 function openProjectModal(projectId) {
     const project = projectsData[projectId];
     if (!project) {
@@ -53,12 +104,10 @@ function openProjectModal(projectId) {
     currentScreenshots = project.screenshots || [];
     currentScreenshotIndex = 0;
 
-    // Populate modal content
     modalProjectId.textContent = projectId;
     modalTitle.textContent = project.title;
     modalDescription.textContent = project.fullDescription;
 
-    // Populate credits (hide if not present)
     if (project.credits) {
         modalCredits.textContent = project.credits;
         modalCredits.parentElement.style.display = 'block';
@@ -66,10 +115,8 @@ function openProjectModal(projectId) {
         modalCredits.parentElement.style.display = 'none';
     }
 
-    // Store video link for later use
     modalScreenshot.dataset.videoLink = project.videoLink || '';
 
-    // Populate features
     modalFeatures.innerHTML = '';
     project.features.forEach(feature => {
         const li = document.createElement('li');
@@ -77,7 +124,6 @@ function openProjectModal(projectId) {
         modalFeatures.appendChild(li);
     });
 
-    // Populate tech stack
     modalTech.innerHTML = '';
     project.techStack.forEach(tech => {
         const span = document.createElement('span');
@@ -85,50 +131,42 @@ function openProjectModal(projectId) {
         modalTech.appendChild(span);
     });
 
-    // Populate installation guide
     modalInstallation.textContent = project.installation;
 
-    // Initialize gallery
     initializeGallery();
 
-    // Show modal
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // Update counter
     updateScreenshotCounter();
 }
 
-// Initialize gallery
 function initializeGallery() {
     const screenshotGallery = document.querySelector('.screenshot-gallery');
     const modalBody = document.querySelector('.modal-body');
 
     if (currentScreenshots.length === 0) {
-        // Hide the entire gallery section when no screenshots
         screenshotGallery.style.display = 'none';
         modalBody.classList.add('no-gallery');
         return;
     }
 
-    // Show the gallery section
     screenshotGallery.style.display = 'block';
     modalBody.classList.remove('no-gallery');
 
-    // Create dots
     galleryDots.innerHTML = '';
     currentScreenshots.forEach((_, index) => {
         const dot = document.createElement('span');
         dot.className = 'dot' + (index === 0 ? ' active' : '');
         dot.addEventListener('click', () => goToScreenshot(index));
+        dot.setAttribute('role', 'button');
+        dot.setAttribute('aria-label', `View screenshot ${index + 1}`);
         galleryDots.appendChild(dot);
     });
 
-    // Update first screenshot
     updateScreenshot();
 }
 
-// Update screenshot display
 function updateScreenshot() {
     if (currentScreenshots.length === 0) return;
 
@@ -137,7 +175,6 @@ function updateScreenshot() {
     modalScreenshot.alt = screenshot.alt;
     modalCaption.textContent = screenshot.caption || '';
 
-    // Check if this is a video item
     if (screenshot.isVideo) {
         modalScreenshot.classList.add('video-thumbnail');
         modalScreenshot.style.cursor = 'pointer';
@@ -146,7 +183,6 @@ function updateScreenshot() {
         modalScreenshot.style.cursor = '';
     }
 
-    // Update dots
     const dots = galleryDots.querySelectorAll('.dot');
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentScreenshotIndex);
@@ -155,21 +191,17 @@ function updateScreenshot() {
     updateScreenshotCounter();
 }
 
-// Update counter
 function updateScreenshotCounter() {
     const total = currentScreenshots.length;
     const current = currentScreenshotIndex + 1;
     screenshotCounter.textContent = total > 0 ? `${current} / ${total}` : '0 / 0';
 
-    // Hide navigation if only 1 or 0 screenshots
     modalPrev.style.display = total > 1 ? 'flex' : 'none';
     modalNext.style.display = total > 1 ? 'flex' : 'none';
 }
 
-// Navigate screenshots
 function goToScreenshot(index) {
     if (currentScreenshots.length === 0) return;
-
     currentScreenshotIndex = index;
     updateScreenshot();
 }
@@ -186,7 +218,6 @@ function prevScreenshot() {
     updateScreenshot();
 }
 
-// Close modal
 function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
@@ -195,7 +226,7 @@ function closeModal() {
     currentScreenshots = [];
 }
 
-// Event listeners for project cards
+// Project cards click handler
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', () => {
         const projectId = card.getAttribute('data-project-id');
@@ -211,7 +242,7 @@ modalClose.addEventListener('click', closeModal);
 modalNext.addEventListener('click', nextScreenshot);
 modalPrev.addEventListener('click', prevScreenshot);
 
-// Handle video thumbnail click
+// Video thumbnail click
 modalScreenshot.addEventListener('click', () => {
     const videoLink = modalScreenshot.dataset.videoLink;
     if (videoLink) {
@@ -243,31 +274,24 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// GitHub links handler
+document.querySelectorAll('.github-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
 
-// Handle clicks on all GitHub links - close modal if open, then redirect to contact section with alert
-document.addEventListener('DOMContentLoaded', () => {
-    const githubLinks = document.querySelectorAll('.github-link');
+        if (modal.classList.contains('active')) {
+            closeModal();
+        }
 
-    githubLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            // Close modal if it's currently open
-            if (modal.classList.contains('active')) {
-                closeModal();
-            }
-
-            // Scroll to contact section
-            const contactSection = document.querySelector('#contact');
-            if (contactSection) {
-                contactSection.scrollIntoView({
-                    behavior: 'smooth'
-                });
-                // Show alert after scroll animation
-                setTimeout(() => {
-                    alert("Let's get in touch so I can give you access to my code");
-                }, 500);
-            }
-        });
+        const contactSection = document.querySelector('#contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({
+                behavior: 'smooth'
+            });
+            setTimeout(() => {
+                alert("Let's get in touch so I can give you access to my code");
+            }, 500);
+        }
     });
 });
+
