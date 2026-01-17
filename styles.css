@@ -357,6 +357,15 @@ section {
     }
 }
 
+/* Modal body without gallery - full width project details */
+.modal-body.no-gallery {
+    grid-template-columns: 1fr;
+}
+
+.modal-body.no-gallery .project-details {
+    max-width: 100%;
+}
+
 /* Screenshot Gallery */
 .screenshot-gallery {
     position: sticky;

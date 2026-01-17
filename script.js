@@ -101,13 +101,19 @@ function openProjectModal(projectId) {
 
 // Initialize gallery
 function initializeGallery() {
+    const screenshotGallery = document.querySelector('.screenshot-gallery');
+    const modalBody = document.querySelector('.modal-body');
+
     if (currentScreenshots.length === 0) {
-        modalScreenshot.src = '';
-        modalCaption.textContent = 'No screenshots available';
-        screenshotCounter.textContent = '0 / 0';
-        galleryDots.innerHTML = '';
+        // Hide the entire gallery section when no screenshots
+        screenshotGallery.style.display = 'none';
+        modalBody.classList.add('no-gallery');
         return;
     }
+
+    // Show the gallery section
+    screenshotGallery.style.display = 'block';
+    modalBody.classList.remove('no-gallery');
 
     // Create dots
     galleryDots.innerHTML = '';
