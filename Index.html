@@ -71,11 +71,11 @@
         <h2 class="section-title">02. Some Things I've Built</h2>
         <div class="projects-grid">
             
-            <div class="project-card">
+            <div class="project-card" data-project-id="budget-buddy">
                 <div class="project-header">
                     <i class="far fa-folder open-folder"></i>
                     <div class="project-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <h3 class="project-title">Budget Buddy (AI Tracker)</h3>
@@ -89,11 +89,11 @@
                 </ul>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-project-id="triple-a-casino">
                 <div class="project-header">
                     <i class="far fa-folder open-folder"></i>
                     <div class="project-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <h3 class="project-title">Triple-A Casino App</h3>
@@ -107,11 +107,11 @@
                 </ul>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-project-id="save-the-princess">
                 <div class="project-header">
                     <i class="far fa-folder open-folder"></i>
                     <div class="project-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <h3 class="project-title">Save the Princess</h3>
@@ -122,6 +122,43 @@
                     <li>Python</li>
                     <li>Tkinter</li>
                     <li>Game Logic</li>
+                </ul>
+            </div>
+
+            <div class="project-card" data-project-id="medicare">
+                <div class="project-header">
+                    <i class="far fa-folder open-folder"></i>
+                    <div class="project-links">
+                        <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3 class="project-title">Medicare - Pharmacy Management System</h3>
+                <div class="project-desc">
+                    <p>A full-stack pharmacy management application with 4 user roles (Admin, Pharmacist, Prescriber, Patient). Features prescription workflow, inventory management, appointment scheduling, and JWT-based authentication.</p>
+                </div>
+                <ul class="project-tech-list">
+                    <li>Java</li>
+                    <li>Spring Boot</li>
+                    <li>Angular</li>
+                    <li>MySQL</li>
+                </ul>
+            </div>
+
+            <div class="project-card" data-project-id="flutter-travel">
+                <div class="project-header">
+                    <i class="far fa-folder open-folder"></i>
+                    <div class="project-links">
+                        <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3 class="project-title">Flutter Travel Booking App</h3>
+                <div class="project-desc">
+                    <p>A cross-platform mobile travel booking app with destination browsing, favorites system, and booking management. Features dynamic pricing, date selection, guest count, and local data persistence with Shared Preferences.</p>
+                </div>
+                <ul class="project-tech-list">
+                    <li>Flutter</li>
+                    <li>Dart</li>
+                    <li>Provider</li>
                 </ul>
             </div>
 
@@ -150,14 +187,75 @@
 
         <footer class="footer">
             <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/brownson-omotoye-8ab96220a/"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:omotoyebrownson@yahoo.com"><i class="fas fa-envelope"></i></a>
             </div>
             <p>Designed & Built by Brownson Omotoye</p>
         </footer>
     </section>
 
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <button class="modal-nav prev" id="modal-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="modal-nav next" id="modal-next"><i class="fas fa-chevron-right"></i></button>
+
+            <div class="modal-header">
+                <span class="modal-project-id" id="modal-project-id"></span>
+                <h2 class="modal-title" id="modal-title"></h2>
+            </div>
+
+            <div class="modal-body">
+                <div class="screenshot-gallery">
+                    <div class="screenshot-container">
+                        <img id="modal-screenshot" src="" alt="">
+                        <div class="screenshot-caption" id="modal-caption"></div>
+                    </div>
+                    <div class="gallery-controls">
+                        <span id="screenshot-counter">1 / 1</span>
+                        <div class="gallery-dots" id="gallery-dots"></div>
+                    </div>
+                </div>
+
+                <div class="project-details">
+                    <div class="project-description">
+                        <h3>About This Project</h3>
+                        <p id="modal-description"></p>
+                    </div>
+
+                    <div class="project-credits">
+                        <h3>Team Credits</h3>
+                        <p id="modal-credits"></p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Key Features</h3>
+                        <ul id="modal-features"></ul>
+                    </div>
+
+                    <div class="project-tech">
+                        <h3>Tech Stack</h3>
+                        <div class="tech-tags" id="modal-tech"></div>
+                    </div>
+
+                    <div class="project-installation">
+                        <h3>How to Run</h3>
+                        <pre id="modal-installation"></pre>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#contact" id="modal-github" class="btn-primary github-link">
+                            <i class="fab fa-github"></i> View Source Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="projectData.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
