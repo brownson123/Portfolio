@@ -7,6 +7,8 @@
 
 A full-stack pharmacy management application built with Spring Boot (backend) and Angular (frontend). This system provides a complete pharmacy workflow including patient management, prescription processing, appointment scheduling, and pharmacy inventory management.
 
+
+
 ## Application Overview
 
 The Pharmacy Management System is a multi-role application that enables different healthcare professionals to manage their daily operations efficiently. The system supports four distinct user roles: **Administrators**, **Pharmacists**, **Prescribers (Doctors)**, and **Patients**.
