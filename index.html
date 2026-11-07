@@ -1,273 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brownson Omotoye | Software Engineer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="logo">Brownson</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact" class="btn-primary">Contact Me</a></li>
-        </ul>
-        <div class="hamburger">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
-
-    <!-- Mobile Navigation Overlay -->
-    <div class="nav-overlay">
-        <div class="nav-close">&times;</div>
-        <ul class="nav-links-mobile">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact" class="btn-primary">Contact Me</a></li>
-        </ul>
-    </div>
-
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <span class="greeting">Hello, world. I am</span>
-            <h1 class="name">Brownson Omotoye.</h1> <h2 class="role">I build things for <span class="highlight">Web, Mobile & AI</span>.</h2>
-            <p class="description">
-                I am a Computer Science student at Sheridan College with hands-on experience in technology projects and hackathons.
-                I combine analytical thinking with creativity to deliver impactful results. </p>
-            <div class="cta-group">
-                <a href="#projects" class="btn-outline">Check out my work</a>
-                <a href="#contact" class="btn-primary">Let's Talk</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section">
-        <h2 class="section-title">01. About Me</h2>
-        <div class="about-container">
-            <div class="about-text">
-                <p>
-                    Hello! My name is Brownson and I enjoy creating innovative software solutions. I am currently pursuing a
-                    <strong>Bachelor of Computer Science</strong> at <strong>Sheridan College</strong> (2024-Present).
-                </p>
-                <p>
-                    I have strong communication and leadership skills developed through professional experiences, and I am passionate about
-                    collaborative problem-solving in hackathons and team initiatives.
-                </p>
-                <p>Here are a few technologies I've been working with recently:</p>
-                <ul class="skills-list">
-                    <li>Python & Flask</li>
-                    <li>C# (.NET MAUI)</li>
-                    <li>Java & Kotlin</li>
-                    <li>Swift (iOS)</li>
-                    <li>HTML, CSS & JS</li>
-                    <li>Firebase & SQL</li>
-                </ul>
-            </div>
-            <div class="about-img">
-                <div class="img-wrapper">
-                    <img src="images/brownson.png" alt="Brownson Omotoye">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="section">
-        <h2 class="section-title">02. Some Things I've Built</h2>
-        <div class="projects-grid">
-
-            <div class="project-card" data-project-id="budget-buddy">
-                <div class="project-header">
-                    <i class="far fa-folder open-folder"></i>
-                    <div class="project-links">
-                        <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <h3 class="project-title">Budget Buddy (AI Tracker)</h3>
-                <div class="project-desc">
-                    <p>An AI-driven expense tracker developed during a 2025 Hackathon. Integrated expense categorization and budgeting insights through machine learning algorithms.</p>
-                </div>
-                <ul class="project-tech-list">
-                    <li>Python</li>
-                    <li>Flask</li>
-                    <li>Firebase</li>
-                </ul>
-            </div>
-
-            <div class="project-card" data-project-id="triple-a-casino">
-                <div class="project-header">
-                    <i class="far fa-folder open-folder"></i>
-                    <div class="project-links">
-                        <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <h3 class="project-title">Triple-A Casino App</h3>
-                <div class="project-desc">
-                    <p>A mobile casino app featuring Poker, Blackjack, and Crazy 8. Designed intuitive game logic and utilized Firebase for real-time user data management.</p>
-                </div>
-                <ul class="project-tech-list">
-                    <li>C#</li>
-                    <li>.NET MAUI</li>
-                    <li>Firebase</li>
-                </ul>
-            </div>
-
-            <div class="project-card" data-project-id="save-the-princess">
-                <div class="project-header">
-                    <i class="far fa-folder open-folder"></i>
-                    <div class="project-links">
-                        <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <h3 class="project-title">Save the Princess</h3>
-                <div class="project-desc">
-                    <p>An interactive Tkinter-based game featuring multiple quests and dynamic backgrounds. Implemented dice-roll mechanics and complex player stat logic.</p>
-                </div>
-                <ul class="project-tech-list">
-                    <li>Python</li>
-                    <li>Tkinter</li>
-                    <li>Game Logic</li>
-                </ul>
-            </div>
-
-            <div class="project-card" data-project-id="medicare">
-                <div class="project-header">
-                    <i class="far fa-folder open-folder"></i>
-                    <div class="project-links">
-                        <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <h3 class="project-title">Medicare - Pharmacy Management System</h3>
-                <div class="project-desc">
-                    <p>A full-stack pharmacy management application with 4 user roles (Admin, Pharmacist, Prescriber, Patient). Features prescription workflow, inventory management, appointment scheduling, and JWT-based authentication.</p>
-                </div>
-                <ul class="project-tech-list">
-                    <li>Java</li>
-                    <li>Spring Boot</li>
-                    <li>Angular</li>
-                    <li>MySQL</li>
-                </ul>
-            </div>
-
-            <div class="project-card" data-project-id="flutter-travel">
-                <div class="project-header">
-                    <i class="far fa-folder open-folder"></i>
-                    <div class="project-links">
-                        <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <h3 class="project-title">Flutter Travel Booking App</h3>
-                <div class="project-desc">
-                    <p>A cross-platform mobile travel booking app with destination browsing, favorites system, and booking management. Features dynamic pricing, date selection, guest count, and local data persistence with Shared Preferences.</p>
-                </div>
-                <ul class="project-tech-list">
-                    <li>Flutter</li>
-                    <li>Dart</li>
-                    <li>Provider</li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="contact" class="section contact-section">
-        <h2 class="section-title">03. What's Next?</h2>
-        <h1 class="big-heading">Get In Touch</h1>
-        <p class="contact-desc">
-            I am currently open to new opportunities in software development. Whether you have a question or just want to say hi, my inbox is always open!
-        </p>
-
-        <form action="https://formspree.io/f/xkowbyza" method="POST" class="contact-form">
-            <div class="form-group">
-                <input type="text" name="name" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn-primary">Send Message</button>
-        </form>
-
-        <footer class="footer">
-            <div class="social-links">
-                <a href="#contact" class="github-link"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/brownson-omotoye-8ab96220a/"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:omotoyebrownson@yahoo.com"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p>Designed & Built by Brownson Omotoye</p>
-        </footer>
-    </section>
-
-    <!-- Project Detail Modal -->
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <button class="modal-nav prev" id="modal-prev"><i class="fas fa-chevron-left"></i></button>
-            <button class="modal-nav next" id="modal-next"><i class="fas fa-chevron-right"></i></button>
-
-            <div class="modal-header">
-                <span class="modal-project-id" id="modal-project-id"></span>
-                <h2 class="modal-title" id="modal-title"></h2>
-            </div>
-
-            <div class="modal-body">
-                <div class="screenshot-gallery">
-                    <div class="screenshot-container">
-                        <img id="modal-screenshot" src="" alt="">
-                        <div class="screenshot-caption" id="modal-caption"></div>
-                    </div>
-                    <div class="gallery-controls">
-                        <span id="screenshot-counter">1 / 1</span>
-                        <div class="gallery-dots" id="gallery-dots"></div>
-                    </div>
-                </div>
-
-                <div class="project-details">
-                    <div class="project-description">
-                        <h3>About This Project</h3>
-                        <p id="modal-description"></p>
-                    </div>
-
-                    <div class="project-credits">
-                        <h3>Team Credits</h3>
-                        <p id="modal-credits"></p>
-                    </div>
-
-                    <div class="project-features">
-                        <h3>Key Features</h3>
-                        <ul id="modal-features"></ul>
-                    </div>
-
-                    <div class="project-tech">
-                        <h3>Tech Stack</h3>
-                        <div class="tech-tags" id="modal-tech"></div>
-                    </div>
-
-                    <div class="project-installation">
-                        <h3>How to Run</h3>
-                        <pre id="modal-installation"></pre>
-                    </div>
-
-                    <div class="project-links">
-                        <a href="#contact" id="modal-github" class="btn-primary github-link">
-                            <i class="fab fa-github"></i> View Source Code
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="projectData.js"></script>
-    <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Brownson Omotoye — Software Engineer</title>
+    <meta name="description" content="Brownson Omotoye loves building software. CS at Sheridan, SWE intern at Turning Point Studios, PM of Huddle, one of two main builders of Station." />
+    <meta name="theme-color" content="#f2eee6" />
+    <meta property="og:title" content="Brownson Omotoye — Software Engineer" />
+    <meta property="og:description" content="Check in, take a look around, and play the game about my life." />
+    <meta property="og:image" content="https://brownsonomotoye.netlify.app/og.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <script>
+      // Paint the first frame in the right colour before anything loads.
+      document.documentElement.style.background = '#f2eee6'
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <main style="font-family: system-ui, sans-serif; max-width: 40rem; margin: 4rem auto; padding: 0 1.5rem">
+        <h1>Brownson Omotoye</h1>
+        <p>Software engineer. CS at Sheridan College. This site needs JavaScript for the fun parts.</p>
+        <p><a href="mailto:omotoyebrownson@yahoo.com">omotoyebrownson@yahoo.com</a> · <a href="https://www.linkedin.com/in/omotoyeb">LinkedIn</a> · <a href="https://github.com/brownson123">GitHub</a></p>
+      </main>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
-
