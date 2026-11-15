@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
-import { useMemo, type ReactNode } from 'react'
-import { qrMatrix, reducedMotion } from '../lib/util'
+import type { ReactNode } from 'react'
+import { reducedMotion } from '../lib/util'
 
 /** The site's one entrance animation: a short fade as something scrolls into view. */
 export function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
@@ -15,24 +15,6 @@ export function Reveal({ children, className = '' }: { children: ReactNode; clas
     >
       {children}
     </motion.div>
-  )
-}
-
-export function QR({ text, className = '' }: { text: string; className?: string }) {
-  const m = useMemo(() => qrMatrix(text), [text])
-  const d = useMemo(() => {
-    let s = ''
-    m.forEach((row, y) =>
-      row.forEach((on, x) => {
-        if (on) s += `M${x} ${y}h1v1h-1z`
-      }),
-    )
-    return s
-  }, [m])
-  return (
-    <svg viewBox={`0 0 ${m.length} ${m.length}`} className={className} shapeRendering="crispEdges" role="img" aria-label={`QR code for ${text}`}>
-      <path d={d} fill="currentColor" />
-    </svg>
   )
 }
 

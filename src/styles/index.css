@@ -171,67 +171,12 @@ body {
   border-bottom: 1px solid color-mix(in srgb, currentColor 22%, transparent);
 }
 
-/* Hairline panel with corner ticks */
+/* Hairline panel */
 .panel {
   position: relative;
   border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
   background: color-mix(in srgb, currentColor 4%, transparent);
-}
-.panel::before,
-.panel::after,
-.panel > .tick-b::before,
-.panel > .tick-b::after {
-  content: '';
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  border: solid currentColor;
-  border-width: 0;
-  opacity: 0.85;
-  pointer-events: none;
-}
-.panel::before {
-  top: -1px;
-  left: -1px;
-  border-top-width: 1.5px;
-  border-left-width: 1.5px;
-}
-.panel::after {
-  top: -1px;
-  right: -1px;
-  border-top-width: 1.5px;
-  border-right-width: 1.5px;
-}
-.panel > .tick-b {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.panel > .tick-b::before {
-  bottom: -1px;
-  left: -1px;
-  border-bottom-width: 1.5px;
-  border-left-width: 1.5px;
-}
-.panel > .tick-b::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom-width: 1.5px;
-  border-right-width: 1.5px;
-}
-@media (hover: hover) {
-  .panel:hover::before {
-    transform: translate(-4px, -4px);
-  }
-  .panel:hover::after {
-    transform: translate(4px, -4px);
-  }
-  .panel:hover > .tick-b::before {
-    transform: translate(-4px, 4px);
-  }
-  .panel:hover > .tick-b::after {
-    transform: translate(4px, 4px);
-  }
+  border-radius: 8px;
 }
 
 /* Square bullet, the same mark the rail connects to */

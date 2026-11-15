@@ -14,19 +14,18 @@ export const me = {
   formspree: 'https://formspree.io/f/xkowbyza',
   // Drop a PDF in /public and set this to e.g. 'resume.pdf' to show the résumé button.
   resume: null as string | null,
-  // Your two photos. Put the files in /public/img and set these, e.g. 'img/badge.jpg'.
+  // Your photo. Put the file in /public/img and set this, e.g. 'img/me.jpg'.
   photos: {
-    badge: 'img/me-badge.webp' as string | null, // shows on the lanyard badge (head and shoulders)
     hello: 'img/me-hello.webp' as string | null, // shows beside the Hello text
     helloAlt: 'Brownson sitting at a desk behind a laptop in a brown T-shirt, looking at the camera',
   },
 }
 
 export const chapters = [
-  { id: 'door', n: '00', label: 'Door', bg: '#f2eee6', fg: '#140a02', accent: '#c8350b' },
+  { id: 'door', n: '00', label: 'Home', bg: '#f2eee6', fg: '#140a02', accent: '#c8350b' },
   { id: 'hello', n: '01', label: 'Hello', bg: '#170c06', fg: '#f2eee6', accent: '#ff7a45' },
   { id: 'work', n: '02', label: 'Work', bg: '#f2eee6', fg: '#23120a', accent: '#c8350b' },
-  { id: 'builds', n: '03', label: 'Builds', bg: '#050a1f', fg: '#eef2ff', accent: '#34d399' },
+  { id: 'builds', n: '03', label: 'Builds', bg: '#140a02', fg: '#f2eee6', accent: '#ff7a45' },
   { id: 'stack', n: '04', label: 'Stack', bg: '#f2eee6', fg: '#23120a', accent: '#c8350b' },
   { id: 'lab', n: '05', label: 'Lab', bg: '#050505', fg: '#ece7dc', accent: '#ff7a45' },
   { id: 'play', n: '06', label: 'Play', bg: '#f2eee6', fg: '#23120a', accent: '#c8350b' },

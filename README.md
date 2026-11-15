@@ -1,6 +1,6 @@
 # brownsonomotoye.netlify.app
 
-My portfolio. It works like an event you check in to, and there's a game about my last two years if you want one.
+My portfolio, with a game about my last two years if you want one.
 
 Built with React, TypeScript, Vite, Tailwind and Motion. The bouquets run on a small WebGL2 ASCII renderer, and the game is a from-scratch canvas engine with no assets to download.
 
@@ -17,7 +17,7 @@ npm run preview   # serve the production build
 
 **All the words live in [`src/data/content.ts`](src/data/content.ts):** links, photos, jobs, projects and the skill graph. Game signs are in [`src/game/level.ts`](src/game/level.ts), and mini-game text is in [`src/game/micro.tsx`](src/game/micro.tsx).
 
-**Photos:** put the two files in `public/img/`, then set their paths in `me.photos` in `content.ts`. Until then, the badge shows a monogram and the Hello chapter is text only.
+**Photo:** put the file in `public/img/`, then set its path in `me.photos.hello` in `content.ts`. Until then, the Hello chapter is text only.
 
 **Résumé button:** drop a PDF in `public/` and set `me.resume` in `content.ts`. It stays hidden until then.
 

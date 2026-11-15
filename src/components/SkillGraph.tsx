@@ -287,11 +287,9 @@ export function SkillGraph() {
   return (
     <div>
       <div ref={wrap} className="relative h-[66svh] min-h-[420px] lg:h-[74vh] panel overflow-hidden">
-        <span className="tick-b" aria-hidden />
         <canvas ref={canvas} className="absolute inset-0 w-full h-full touch-pan-y" role="img" aria-label="A graph connecting Brownson's skills to the projects that used them. The same information is listed below." />
       </div>
       <div className="panel p-4 lg:p-5 mt-3 min-h-[116px]" aria-live="polite">
-        <span className="tick-b" aria-hidden />
         <div className="flex flex-wrap items-baseline justify-between gap-3">
           <div className="title text-2xl lg:text-3xl">{hub?.label ?? build}</div>
           {hasCase && (

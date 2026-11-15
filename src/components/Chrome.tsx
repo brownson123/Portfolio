@@ -15,7 +15,7 @@ export function Header() {
           style={{ background: 'var(--bg)' }}
           aria-label="Back to the top"
         >
-          <span className="pixel text-base leading-none">BO</span>
+          <span className="title text-base leading-none">BO</span>
           <span className="hidden sm:inline opacity-70">{me.name}</span>
         </button>
         <button onClick={() => scrollToId('talk')} className="pointer-events-auto btn !min-h-9 !px-3.5 hidden sm:inline-flex">
@@ -31,7 +31,7 @@ export function Rail() {
   const chapter = useApp((s) => s.chapter)
   return (
     <nav
-      aria-label="Checkpoints"
+      aria-label="Sections"
       className={`fixed left-0 top-1/2 -translate-y-1/2 z-40 hidden lg:block w-[var(--rail)] pl-6 pr-4 transition-opacity duration-500 ${
         chapter === 'door' ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
@@ -83,7 +83,7 @@ export function Dock() {
       >
         <AnimatePresence mode="popLayout" initial={false}>
           {menu ? (
-            <motion.nav key="open" aria-label="Checkpoints" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-[min(86vw,320px)] p-2">
+            <motion.nav key="open" aria-label="Sections" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-[min(86vw,320px)] p-2">
               <ul className="m-0 p-0 list-none grid grid-cols-2 gap-1">
                 {chapters.map((c) => (
                   <li key={c.id}>
@@ -120,31 +120,6 @@ export function Dock() {
           )}
         </AnimatePresence>
       </motion.div>
-    </div>
-  )
-}
-
-// ------------------------------------------------------------ toasts
-export function Toasts() {
-  const t = useApp((s) => s.toast)
-  return (
-    <div className="fixed z-[80] left-1/2 -translate-x-1/2 lg:left-6 lg:translate-x-0 lg:bottom-6 top-16 lg:top-auto pointer-events-none w-[min(88vw,340px)]" role="status" aria-live="polite">
-      <AnimatePresence>
-        {t && (
-          <motion.div
-            key={t.id}
-            initial={{ y: 12, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="p-3.5"
-            style={{ background: 'var(--fg)', color: 'var(--bg)' }}
-          >
-            <div className="pixel text-sm leading-none mb-1.5">{t.title}</div>
-            <div className="mono opacity-80">{t.body}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   )
 }

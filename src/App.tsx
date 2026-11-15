@@ -1,7 +1,6 @@
 import { AnimatePresence } from 'motion/react'
-import { lazy, Suspense, useEffect, useState } from 'react'
-import { Dock, Header, Rail, Toasts } from './components/Chrome'
-import { Preloader } from './components/Preloader'
+import { lazy, Suspense, useEffect } from 'react'
+import { Dock, Header, Rail } from './components/Chrome'
 import { chapters, type ChapterId } from './data/content'
 import { initScroll } from './lib/scroll'
 import { applyTheme, setChapter, setOverlay, useOverlay } from './lib/state'
@@ -50,7 +49,6 @@ function useChapterColours() {
 }
 
 export default function App() {
-  const [ready, setReady] = useState(false)
   useEffect(() => initScroll(), [])
   useChapterColours()
   const { game } = useOverlay()
@@ -82,13 +80,11 @@ export default function App() {
       <a href="#hello" className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-2 focus:left-2 btn">
         Skip to content
       </a>
-      <Preloader onDone={() => setReady(true)} />
       <Header />
       <Rail />
       <Dock />
-      <Toasts />
       <main>
-        <Hero ready={ready} />
+        <Hero />
         <Hello />
         <Work />
         <Builds />

@@ -1,5 +1,3 @@
-import { encode } from 'uqr'
-
 export const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v))
 export const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 export const smoothstep = (a: number, b: number, x: number) => {
@@ -36,10 +34,6 @@ export function persist(key: string, value: unknown) {
   } catch {
     /* private mode */
   }
-}
-
-export function qrMatrix(text: string): boolean[][] {
-  return encode(text, { ecc: 'M', border: 0 }).data
 }
 
 export function asset(path: string) {

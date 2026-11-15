@@ -2,21 +2,13 @@ import { useSyncExternalStore } from 'react'
 import type { ChapterId } from '../data/content'
 import { persist, store } from './util'
 
-// One tiny shared store: which checkpoints this visitor has reached, which
-// easter eggs they found, and the toast currently on screen.
-type Toast = { id: number; title: string; body: string }
+// One tiny shared store: the section on screen and whether the game's sound is on.
 type State = {
-  stamps: string[]
-  wins: string[]
-  toast: Toast | null
   chapter: ChapterId
   sound: boolean
 }
 
 let state: State = {
-  stamps: store<string[]>('bo.stamps', []),
-  wins: store<string[]>('bo.wins', []),
-  toast: null,
   chapter: 'door',
   sound: store<boolean>('bo.sound', false),
 }
@@ -37,26 +29,8 @@ export const useApp = <T,>(pick: (s: State) => T): T =>
   )
 export const getApp = () => state
 
-let toastTimer = 0
-export function toast(title: string, body: string) {
-  window.clearTimeout(toastTimer)
-  set({ toast: { id: Date.now(), title, body } })
-  toastTimer = window.setTimeout(() => set({ toast: null }), 4200)
-}
-
 export function setChapter(id: ChapterId) {
-  if (state.chapter === id) return
-  const stamps = state.stamps.includes(id) ? state.stamps : [...state.stamps, id]
-  if (stamps !== state.stamps) persist('bo.stamps', stamps)
-  set({ chapter: id, stamps })
-}
-
-export function award(id: string, title: string, body: string) {
-  if (state.wins.includes(id)) return
-  const wins = [...state.wins, id]
-  persist('bo.wins', wins)
-  set({ wins })
-  toast(title, body)
+  if (state.chapter !== id) set({ chapter: id })
 }
 
 export function setSound(on: boolean) {

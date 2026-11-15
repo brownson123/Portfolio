@@ -1,13 +1,12 @@
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useEffect, useRef, type ReactNode } from 'react'
-import { RoleToy, ScannerToy, ThemeToy, TravelToy } from '../components/toys'
+import { RoleToy, ThemeToy, TravelToy } from '../components/toys'
 import { ArrowUR, ChapterTag, Reveal } from '../components/ui'
 import { me, moreBuilds, projects, type Build, type Project } from '../data/content'
 import { setOverlay } from '../lib/state'
 import { reducedMotion } from '../lib/util'
 
 const TOYS: Record<string, ReactNode> = {
-  station: <ScannerToy />,
   medicare: <RoleToy />,
   budget: <ThemeToy />,
   travel: <TravelToy />,
@@ -125,9 +124,13 @@ function ProjectCard({ project, index, total }: { project: Project; index: numbe
   )
 }
 
+// Projects with screens get the big cards; the rest sit together under Also built.
+const big = projects.filter((p) => p.shots?.length)
+const small: Build[] = [...projects.filter((p) => !p.shots?.length), ...moreBuilds]
+
 export function Builds() {
   return (
-    <section id="builds" data-chapter="builds" data-bg="#050a1f" data-fg="#eef2ff" data-accent="#34d399">
+    <section id="builds" data-chapter="builds">
       <div className="chapter pt-24 lg:pt-36 pb-16 lg:pb-24">
         <ChapterTag n="03" label="Builds" />
         <Reveal>
@@ -136,8 +139,8 @@ export function Builds() {
       </div>
 
       <div className="relative">
-        {projects.map((p, i) => (
-          <ProjectCard key={p.id} project={p} index={i} total={projects.length} />
+        {big.map((p, i) => (
+          <ProjectCard key={p.id} project={p} index={i} total={big.length} />
         ))}
       </div>
 
@@ -152,10 +155,9 @@ export function Builds() {
         <div className="chapter pt-20 lg:pt-28 pb-20 lg:pb-28">
           <h3 className="title text-[clamp(2.25rem,4.4vw,4.25rem)] m-0">Also built</h3>
           <div className="grid md:grid-cols-2 gap-3 mt-8">
-            {moreBuilds.map((b) => (
-              <Reveal key={b.id}>
+            {small.map((b) => (
+              <Reveal key={b.id} className="md:last:odd:col-span-2">
                 <article className="panel h-full p-5 flex flex-col">
-                  <span className="tick-b" aria-hidden />
                   <Chips build={b} />
                   <h4 className="m-0 mt-4 title text-3xl">{b.title}</h4>
                   <div className="mt-4 mb-5 text-[0.9375rem]">

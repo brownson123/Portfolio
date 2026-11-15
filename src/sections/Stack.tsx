@@ -18,7 +18,6 @@ export function Stack() {
       <div className="grid md:grid-cols-2 gap-3 mt-3">
         <Reveal>
           <div className="panel p-4 lg:p-5 h-full">
-            <span className="tick-b" aria-hidden />
             <div className="label mb-3">Also comfortable with</div>
             <div className="flex flex-wrap gap-1.5">
               {graph.also.map((s) => (
@@ -29,7 +28,6 @@ export function Stack() {
         </Reveal>
         <Reveal>
           <div className="panel p-4 lg:p-5 h-full">
-            <span className="tick-b" aria-hidden />
             <div className="label mb-3">Certificates · MongoDB · March 2026</div>
             <ul className="list-none m-0 p-0 mono space-y-1.5">
               {graph.receipts.map((r) => (
